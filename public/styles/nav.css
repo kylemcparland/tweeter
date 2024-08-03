@@ -1,0 +1,22 @@
+#navbar {
+  display: flex;
+  background-color: #4056A1;
+  height: 120px;
+  align-items: center;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+
+  color: #ffffff;
+  justify-content: space-between;
+}
+
+.navleft {
+  display: flex;
+  font-family: "bungee";
+}
+
+.navright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
