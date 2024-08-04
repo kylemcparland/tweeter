@@ -22,4 +22,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 90px;
+  justify-content: center;
+}
+
+.fa-angles-down {
+  color: red;
 }
