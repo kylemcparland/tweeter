@@ -60,13 +60,13 @@
   </header>
 
   <!-- Page-specific (main) content here -->
-  <main class="container">
+  <main class="main-container">
 
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
       <form action="tweets" method="POST" id="tweet-container">
-        <label for="tweet-text"></label>
-        <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text" placeholder='"Mrs. Krabappel and Principal Skinner were in the closet making babies and I saw one of the babies and the baby looked at me!"'></textarea>
         <div id="compose-bottom">
           <button id="submit-tweet" type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
