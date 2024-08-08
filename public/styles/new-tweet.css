@@ -1,9 +1,10 @@
 .new-tweet {
   /* background-color:blue; */
-  width: 75%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 1em;
 }
 
 #tweet-text {
