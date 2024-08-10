@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
   const data = [
     {
@@ -24,9 +24,9 @@ $(document).ready(function () {
       },
       "created_at": 1461113959088
     }
-  ]
+  ];
 
-  const createTweetElement = function (tweetData) {
+  const createTweetElement = function(tweetData) {
 
     const { user: {name, avatar, handle}, content: {text: content}, created_at } = tweetData;
 
@@ -54,15 +54,15 @@ $(document).ready(function () {
   </div>`);
 
     return $tweet;
-  }
+  };
 
-  const renderTweets = function (tweets) {
-    for (const tweet of tweets) {
+  const renderTweets = function(tweets) {
+    tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
       $(`.tweets-container`).prepend($tweet);
-    }
-  }
+    });
+  };
 
-  renderTweets(data)
+  renderTweets(data);
 
-})
+});
