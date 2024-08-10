@@ -18,7 +18,7 @@
 }
 
 .tweet:hover {
-  box-shadow: 7px 7px 1px #c5cbe3
+  box-shadow: 7px 7px 1px #c5cbe3;
 }
 
 .tweet-top {
@@ -33,6 +33,10 @@
 .tweet-top-left {
   display: flex;
   align-items: center;
+}
+
+.avatar {
+  width: 25%;
 }
 
 .username {
