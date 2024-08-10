@@ -46,3 +46,11 @@
   text-decoration: none;
   display: inline-block;
 }
+
+#submit-tweet:hover {
+  background-color: #ca9824;
+}
+
+#submit-tweet:active {
+  background-color: #f6ae29;
+}

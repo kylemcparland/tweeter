@@ -57,9 +57,10 @@ $(document).ready(function () {
 
   $(tweetContainer).on("submit", function (event) {
     event.preventDefault();
-    const tweetCheck = document.getElementById('tweet-text').value;
+    const tweetCheck = document.getElementById('tweet-text').value.trim();
 
     // Error handling...
+    // (Consider separating as separate function isTweetValid())
     if (!tweetCheck) {
       return alert("Field is blank. Please enter text.")
     }
@@ -78,9 +79,11 @@ $(document).ready(function () {
       success: function (response) {
         console.log("Tweet submitted:", response);
         tweetContainer.reset();
+        loadTweets(renderTweets);
       },
       error: function (error) {
         console.log("Error submitting tweet:", error);
+        return alert("Error submitting tweet:", error)
       }
     });
   });
