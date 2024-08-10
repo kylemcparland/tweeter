@@ -41,31 +41,45 @@ $(document).ready(function () {
 
   const loadTweets = (callback) => {
     $.ajax("/tweets", { method: "GET" })
-    .then(function (tweets) {
-      console.log("Tweets successfully retrieved! =>", tweets);
-      callback(tweets);
-    })
+      .then(tweets => {
+        console.log("Tweets successfully retrieved! =>", tweets);
+        callback(tweets);
+      })
+      .catch(error => {
+        console.log("Error retrieving tweets! =>", error);
+      });
   }
 
   loadTweets(renderTweets);
 
-
-  
   // SUBMIT TWEET //
-  const submitTweet = document.getElementById("tweet-container");
+  const tweetContainer = document.getElementById("tweet-container");
 
-  $(submitTweet).on("submit", function(event) {
+  $(tweetContainer).on("submit", function (event) {
     event.preventDefault();
+    const tweetCheck = document.getElementById('tweet-text').value;
+
+    // Error handling...
+    if (!tweetCheck) {
+      return alert("Field is blank. Please enter text.")
+    }
+    if (tweetCheck.length > 140) {
+      return alert("Tweet is too long!")
+    }
+
+    // Success! Submit tweet...
     const tweetContent = $(this).serialize();
+
     console.log("Form submitted! Performing AJAX request:", tweetContent);
     $.ajax({
       type: "POST",
       url: "/tweets",
       data: tweetContent,
-      success: function(response) {
+      success: function (response) {
         console.log("Tweet submitted:", response);
+        tweetContainer.reset();
       },
-      error: function(error) {
+      error: function (error) {
         console.log("Error submitting tweet:", error);
       }
     });
