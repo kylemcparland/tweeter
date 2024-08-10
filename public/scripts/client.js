@@ -4,7 +4,7 @@ $(document).ready(function () {
     {
       "user": {
         "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
+        "avatar": "https://i.imgur.com/73hZDYK.png"
         ,
         "handle": "@SirIsaac"
       },
@@ -16,7 +16,7 @@ $(document).ready(function () {
     {
       "user": {
         "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
+        "avatar": "https://i.imgur.com/nlhLi3I.png",
         "handle": "@rd"
       },
       "content": {
@@ -28,13 +28,7 @@ $(document).ready(function () {
 
   const createTweetElement = function (tweetData) {
 
-    const name = tweetData.user.name;
-    const avatar = tweetData.user.avatars;
-    const handle = tweetData.user.handle;
-    const content = tweetData.content.text;
-    const created_at = tweetData.created_at;
-
-    console.log(avatar);
+    const { user: {name, avatar, handle}, content: {text: content}, created_at } = tweetData;
 
     const $tweet = $(`<div class="tweet">
     <header class="tweet-top">
