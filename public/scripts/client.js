@@ -15,7 +15,7 @@ $(document).ready(function () {
       <h5 class="handle">${handle}</h5>
     </header>
     <div class="tweet-content">
-      <article class="posted-tweet">${text}</article>
+      <article class="posted-tweet"></article>
     </div>
     <footer class="tweet-bottom">
       <article class="age">
@@ -29,10 +29,13 @@ $(document).ready(function () {
     </footer>
   </div>`);
 
+    $tweet.find(".posted-tweet").text(text);
+
     return $tweet;
   };
 
   const renderTweets = (tweets) => {
+    $(`.tweets-container`).empty();
     tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
       $(`.tweets-container`).prepend($tweet);
@@ -52,7 +55,8 @@ $(document).ready(function () {
 
   loadTweets(renderTweets);
 
-  // SUBMIT TWEET //
+
+  //// -------------- SUBMIT TWEET -------------- ////
   const tweetContainer = document.getElementById("tweet-container");
 
   $(tweetContainer).on("submit", function (event) {
@@ -62,13 +66,22 @@ $(document).ready(function () {
     // Error handling...
     // (Consider separating as separate function isTweetValid())
     if (!tweetCheck) {
-      return alert("Field is blank. Please enter text.")
+      return errorMsg(`You can't submit an empty tweet! May I suggest a Simpsons quote?`);
     }
     if (tweetCheck.length > 140) {
-      return alert("Tweet is too long!")
+      return errorMsg(`Your tweet is too long! Remember: Brevity is the soul of wit!`);
     }
 
+
+
     // Success! Submit tweet...
+
+    if ($('#error-msg').length > 0) {
+      $('#error-msg').slideUp(200, function () {
+        $(this).remove();
+      })
+    }
+
     const tweetContent = $(this).serialize();
 
     console.log("Form submitted! Performing AJAX request:", tweetContent);
@@ -83,9 +96,21 @@ $(document).ready(function () {
       },
       error: function (error) {
         console.log("Error submitting tweet:", error);
-        return alert("Error submitting tweet:", error)
+        return errorMsg(`Error submitting tweet! Please refresh and try again.`);
       }
     });
   });
+
+  const errorMsg = function (errorText) {
+    const $error = $(`<div id="error-msg" style="display: none;">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <p> ${errorText} <p>
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      `)
+
+    $(`.error-container`).empty().append($error);
+    $error.slideDown(200);
+  }
 
 });

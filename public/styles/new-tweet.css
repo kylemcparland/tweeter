@@ -54,3 +54,23 @@
 #submit-tweet:active {
   background-color: #f6ae29;
 }
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-weight:bold;
+  font-size: large;
+}
+
+#error-msg {
+  display: flex;
+  width: inherit;
+  border-style: dashed;
+  border-color: red;
+  color: red;
+  justify-content: space-around;
+  align-items: baseline;
+  padding-left: .5em;
+  padding-right: .5em;
+}

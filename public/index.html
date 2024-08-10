@@ -21,8 +21,6 @@
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <script src="https://kit.fontawesome.com/4da98557cd.js" crossorigin="anonymous"></script>
-
   <!-- App CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
@@ -31,7 +29,8 @@
   <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
   <!-- External JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 
   <!-- App JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
@@ -69,6 +68,7 @@
   <main class="main-container">
 
     <section class="new-tweet">
+      <div class="error-container"></div>
       <h2>Compose Tweet</h2>
       <form action="/tweets" method="POST" id="tweet-container">
         <label for="tweet-text">What are you humming about?</label>
