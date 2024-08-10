@@ -5,7 +5,6 @@ $(document).ready(function() {
     charCount = $(this).val().length;
     // console.log(event.originalEvent.data);
     let remainingChars = 140 - charCount;
-    console.log(remainingChars);
 
     let counter = $(this).closest("#tweet-container").find(".counter");
 

@@ -1,49 +1,25 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatar": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatar": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
+  const createTweetElement = (tweetData) => {
 
-  const createTweetElement = function(tweetData) {
+    const { user: { name, avatars, handle }, content: { text }, created_at } = tweetData;
 
-    const { user: {name, avatar, handle}, content: {text: content}, created_at } = tweetData;
+    const timeAgo = timeago.format(created_at, 'en_US');
 
     const $tweet = $(`<div class="tweet">
     <header class="tweet-top">
       <div class="tweet-top-left">
-        <img class="avatar" alt="avatar" src="${avatar}">
+        <img class="avatar" alt="avatar" src="${avatars}">
         <article class="username">${name}</article>
       </div>
       <h5 class="handle">${handle}</h5>
     </header>
     <div class="tweet-content">
-      <article class="posted-tweet">${content}</article>
+      <article class="posted-tweet">${text}</article>
     </div>
     <footer class="tweet-bottom">
       <article class="age">
-        ${created_at}
+        ${timeAgo}
       </article>
       <div class="tweet-bottom-right">
         <i class="fa-solid fa-retweet"></i>
@@ -56,13 +32,43 @@ $(document).ready(function() {
     return $tweet;
   };
 
-  const renderTweets = function(tweets) {
+  const renderTweets = (tweets) => {
     tweets.forEach(tweet => {
       const $tweet = createTweetElement(tweet);
       $(`.tweets-container`).prepend($tweet);
     });
   };
 
-  renderTweets(data);
+  const loadTweets = (callback) => {
+    $.ajax("/tweets", { method: "GET" })
+    .then(function (tweets) {
+      console.log("Tweets successfully retrieved! =>", tweets);
+      callback(tweets);
+    })
+  }
+
+  loadTweets(renderTweets);
+
+
+  
+  // SUBMIT TWEET //
+  const submitTweet = document.getElementById("tweet-container");
+
+  $(submitTweet).on("submit", function(event) {
+    event.preventDefault();
+    const tweetContent = $(this).serialize();
+    console.log("Form submitted! Performing AJAX request:", tweetContent);
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: tweetContent,
+      success: function(response) {
+        console.log("Tweet submitted:", response);
+      },
+      error: function(error) {
+        console.log("Error submitting tweet:", error);
+      }
+    });
+  });
 
 });
