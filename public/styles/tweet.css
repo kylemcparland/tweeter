@@ -24,10 +24,10 @@
 .tweet-top {
   display: flex;
   width: 100%;
-  height: 35%;
+  height: 30%;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1em;
+  padding-top: 0.8em;
 }
 
 .tweet-top-left {
@@ -47,8 +47,8 @@
 .tweet-content {
   display: flex;
   width: 100%;
-  height: 36%;
-  align-items: end;
+  height: 45%;
+  align-items: center;
   border-bottom: 3px solid #545149;
 }
 
@@ -61,9 +61,10 @@
 .tweet-bottom {
   display: flex;
   width: 100%;
-  height: 29%;
+  height: 25%;
   justify-content: space-between;
   align-items: center;
+  font-size: smaller
 }
 
 .tweet-bottom-right {
