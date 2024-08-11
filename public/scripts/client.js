@@ -116,9 +116,14 @@ $(document).ready(function () {
   const navRight = document.getElementById('navright')
 
   $(navRight).on("click", function () {
-    console.log("navright CLICKED");
-    $(`.new-tweet`).slideDown(300);
-    $('#tweet-text').focus();
+    
+    const formVisable = $('.new-tweet:visible').length;
+    if (!formVisable) {
+      $(`.new-tweet`).slideDown(300);
+      $('#tweet-text').focus();
+    } else {
+      $(`.new-tweet`).slideUp(300);
+    }
   })
 
 });
