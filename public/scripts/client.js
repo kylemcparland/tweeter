@@ -78,8 +78,6 @@ $(document).ready(function () {
       return errorMsg(`Your tweet is too long! Remember: Brevity is the soul of wit!`);
     }
 
-
-
     // Success! Submit tweet...
 
     if ($('#error-msg').length > 0) {
@@ -97,7 +95,9 @@ $(document).ready(function () {
       data: tweetContent,
       success: function (response) {
         console.log("Tweet submitted:", response);
+        $('.counter').text(140);
         tweetContainer.reset();
+        randomPlaceholderMsg();
         loadTweets(renderTweets, true);
       },
       error: function (error) {
@@ -107,6 +107,25 @@ $(document).ready(function () {
     });
   });
 
+  // ---- SUBMIT TWEET PALCEHOLDER TEXT ---- //
+
+  const randomPlaceholderMsg = () => {
+    const placeholderArr = [
+      "Mrs. Krabappel and Principal Skinner were in the closet making babies and I saw one of the babies and the baby looked at me!",
+      "And when the doctor said I didn't have worms anymore, that was the happiest day of my life.",
+      "Me fail english? That's unpossible!",
+      "I heard your dad went into a restaurant and ate all the food in the restaurant and they had to close the restaurant.",
+      "The doctor said I wouldn't have so many nose bleeds if I kept my finger outta there.",
+      "Hi, Lisa! Hi, Super Nintendo Chalmers! I'm learnding!"
+    ];
+    const randomNum = Math.floor(Math.random() * placeholderArr.length);
+    $("#tweet-text").attr("placeholder", placeholderArr[randomNum]);
+  }
+
+  randomPlaceholderMsg()
+
+
+  // ---- ERROR MESSAGE ---- //
   const errorMsg = function (errorText) {
     const $error = $(`<div id="error-msg" style="display: none;">
       <i class="fa-solid fa-triangle-exclamation"></i>
@@ -125,6 +144,7 @@ $(document).ready(function () {
 
     const formVisable = $('.new-tweet:visible').length;
     if (!formVisable) {
+      randomPlaceholderMsg();
       $(`.new-tweet`).slideDown(300);
       $('#tweet-text').focus();
     } else {
@@ -133,8 +153,9 @@ $(document).ready(function () {
   })
 
   $(window).on("scroll", function () {
-    if ($(window).scrollTop() > 200) {
+    if ($(window).scrollTop() > 300) {
       $(`#scroll-up`).css("display", "flex");
+      $(`#scroll-up`).addClass('appear');
       // $(navRight).css("display", "none");
     } else {
       $(`#scroll-up`).css("display", "none");
@@ -142,7 +163,8 @@ $(document).ready(function () {
     }
   })
 
-  $('#scroll-up').on("click", function() {
+  $('#scroll-up').on("click", function () {
+    randomPlaceholderMsg()
     $(`.new-tweet`).slideDown(300);
     $('#tweet-text').focus();
     window.scrollTo({

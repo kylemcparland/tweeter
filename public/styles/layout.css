@@ -32,6 +32,7 @@ body {
   align-items: center;
   background-color: inherit;
   width: 75%;
+  min-width: 600px;
   justify-content: center;
 }
 

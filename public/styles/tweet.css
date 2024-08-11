@@ -17,13 +17,13 @@
   padding-right: 1em;
 }
 .tweet.highlight {
-  animation-name: new;
+  animation-name: newTweet;
   animation-duration: .5s;
 }
 
-@keyframes new {
-  from {color: #f4f1ec}
-  to {color: #545149;}
+@keyframes newTweet {
+  from {opacity: 0}
+  to {opacity: 1;}
 }
 
 .tweet:hover {
@@ -70,6 +70,8 @@
   padding-bottom: .2em;
   padding-left: .5em;
   padding-right: .5em;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .tweet-bottom {
@@ -90,6 +92,10 @@
 .age {
   font-size: smaller;
   padding-left: .5em;
+}
+
+.tweet-bottom-right .fa-solid {
+  color: #4056A1;
 }
 
 .fa-retweet:hover {
