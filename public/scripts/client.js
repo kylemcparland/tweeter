@@ -127,17 +127,25 @@ $(document).ready(function () {
   })
 
   $(window).on("scroll", function () {
-    if ($(window).scrollTop() > 175) {
+    if ($(window).scrollTop() > 200) {
       $(`#scroll-up`).css("display", "flex");
+      // $(navRight).css("display", "none");
     } else {
       $(`#scroll-up`).css("display", "none");
+      // $(navRight).css("display", "flex");
     }
   })
 
   $('#scroll-up').on("click", function() {
     $(`.new-tweet`).slideDown(300);
     $('#tweet-text').focus();
-    window.scrollTo(0,0)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    })
   })
 
 });
+
+// JavaScript: You could consider refactoring your code to make it more modular. For example, the code for showing and hiding the scroll-up button could be put into a separate function.
