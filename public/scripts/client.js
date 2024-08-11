@@ -116,7 +116,7 @@ $(document).ready(function () {
   const navRight = document.getElementById('navright')
 
   $(navRight).on("click", function () {
-    
+
     const formVisable = $('.new-tweet:visible').length;
     if (!formVisable) {
       $(`.new-tweet`).slideDown(300);
@@ -124,6 +124,20 @@ $(document).ready(function () {
     } else {
       $(`.new-tweet`).slideUp(300);
     }
+  })
+
+  $(window).on("scroll", function () {
+    if ($(window).scrollTop() > 175) {
+      $(`#scroll-up`).css("display", "flex");
+    } else {
+      $(`#scroll-up`).css("display", "none");
+    }
+  })
+
+  $('#scroll-up').on("click", function() {
+    $(`.new-tweet`).slideDown(300);
+    $('#tweet-text').focus();
+    window.scrollTo(0,0)
   })
 
 });

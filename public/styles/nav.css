@@ -15,6 +15,7 @@
 .navleft {
   display: flex;
   font-family: "bungee";
+  font-size: larger;
 }
 
 #navright {
@@ -32,7 +33,7 @@
 }
 
 .fa-angles-down {
-  color: red;
+  color: #fa3c2d;
   position: relative;
   padding: 20px
 }
@@ -48,4 +49,29 @@
 @keyframes arrow {
   from {top: 0px}
   to {top: 10px}
+}
+
+#scroll-up {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-bottom: 25px;
+  background-color: #fa3c2d;
+  color: #ffffff;
+  border-radius: 100%;
+  width: 90px;
+  height: 90px;
+  border: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#scroll-up:hover {
+  background-color: #ff7268;
+}
+
+.fa-angles-up {
+  font-size: 40px;
 }
