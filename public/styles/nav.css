@@ -8,7 +8,6 @@
   align-items: center;
   padding-left: 1.5em;
   padding-right: 1.5em;
-
   color: #ffffff;
   justify-content: space-between;
 }
@@ -18,14 +17,35 @@
   font-family: "bungee";
 }
 
-.navright {
+#navright {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90px;
+  height: 55px;
   justify-content: center;
+}
+
+.write-tweet {
+  bottom: -.8em;
+  position: relative;
+  user-select: none;
 }
 
 .fa-angles-down {
   color: red;
+  position: relative;
+  padding: 20px
+}
+
+#navright:hover .fa-angles-down {
+  animation-name: arrow;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes arrow {
+  from {top: 0px}
+  to {top: 10px}
 }

@@ -1,10 +1,15 @@
 .new-tweet {
   /* background-color:blue; */
   width: 90%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding-bottom: 1em;
+}
+
+.humming {
+  font-weight: 600;
+  padding-top: 1.5em;
 }
 
 #tweet-text {

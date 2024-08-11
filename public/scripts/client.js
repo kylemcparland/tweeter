@@ -113,4 +113,12 @@ $(document).ready(function () {
     $error.slideDown(200);
   }
 
+  const navRight = document.getElementById('navright')
+
+  $(navRight).on("click", function () {
+    console.log("navright CLICKED");
+    $(`.new-tweet`).slideDown(300);
+    $('#tweet-text').focus();
+  })
+
 });
