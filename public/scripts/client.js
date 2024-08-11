@@ -34,19 +34,25 @@ $(document).ready(function () {
     return $tweet;
   };
 
-  const renderTweets = (tweets) => {
+  const renderTweets = (tweets, boolean) => {
     $(`.tweets-container`).empty();
-    tweets.forEach(tweet => {
+    for (const tweet of tweets) {
+
       const $tweet = createTweetElement(tweet);
+      // If newest tweet...
+      if (tweet === tweets[tweets.length - 1] && boolean) {
+        $tweet.addClass('highlight');
+      }
+
       $(`.tweets-container`).prepend($tweet);
-    });
+    };
   };
 
-  const loadTweets = (callback) => {
+  const loadTweets = (callback, boolean) => {
     $.ajax("/tweets", { method: "GET" })
       .then(tweets => {
         console.log("Tweets successfully retrieved! =>", tweets);
-        callback(tweets);
+        callback(tweets, boolean);
       })
       .catch(error => {
         console.log("Error retrieving tweets! =>", error);
@@ -92,7 +98,7 @@ $(document).ready(function () {
       success: function (response) {
         console.log("Tweet submitted:", response);
         tweetContainer.reset();
-        loadTweets(renderTweets);
+        loadTweets(renderTweets, true);
       },
       error: function (error) {
         console.log("Error submitting tweet:", error);

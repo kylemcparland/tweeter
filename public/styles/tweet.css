@@ -16,6 +16,15 @@
   padding-left: 1em;
   padding-right: 1em;
 }
+.tweet.highlight {
+  animation-name: new;
+  animation-duration: .5s;
+}
+
+@keyframes new {
+  from {color: #f4f1ec}
+  to {color: #545149;}
+}
 
 .tweet:hover {
   box-shadow: 7px 7px 1px #c5cbe3;
