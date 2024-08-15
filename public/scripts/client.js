@@ -153,7 +153,7 @@ $(document).ready(function () {
   })
 
   $(window).on("scroll", function () {
-    if ($(window).scrollTop() > 300) {
+    if ($(window).scrollTop() > 350) {
       $(`#scroll-up`).css("display", "flex");
       $(`#scroll-up`).addClass('appear');
       // $(navRight).css("display", "none");

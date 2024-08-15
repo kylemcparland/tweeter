@@ -1,7 +1,8 @@
+@use "base";
+
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -9,15 +10,16 @@ html {
 /*
  * Global layout stuff
  */
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #545149;
-  background-color: #f4f1ec;
+  color: base.$border-color;
+  background-color: base.$background-color;
   font-size: 24px;
   font-family: "Source Sans 3", sans-serif;
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 .main-container {

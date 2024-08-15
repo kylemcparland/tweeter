@@ -1,3 +1,5 @@
+@use "base";
+
 .tweets-container {
   display: flex;
   flex-direction: column;
@@ -11,7 +13,7 @@
   width: 90%;
   /* height: 200px; */
   height: fit-content;
-  border: 4px solid #545149;
+  border: 4px solid base.$border-color;
   margin: 30px;
   align-items: center;
   padding-left: 1em;
@@ -32,7 +34,7 @@
   }
 }
 .tweet:hover {
-  box-shadow: 7px 7px 1px #c5cbe3;
+  box-shadow: 7px 7px 1px base.$font-secondary;
 }
 
 .tweet-top {
@@ -61,7 +63,7 @@
 }
 
 .handle {
-  color: #c5cbe3;
+  color: base.$font-secondary;
 }
 
 .tweet-content {
@@ -70,7 +72,7 @@
   /* height: 45%; */
   min-height: 75px;
   align-items: center;
-  border-bottom: 3px solid #545149;
+  border-bottom: 3px solid base.$border-color;
 }
 
 .posted-tweet {
@@ -103,29 +105,29 @@
 }
 
 .tweet-bottom-right .fa-solid {
-  color: #4056A1;
+  color: base.$primary-color;
 }
 
 .fa-retweet:hover {
-  color: #f6ae29;
+  color: base.$secondary-color;
 }
 
 .fa-retweet:active {
-  color: #fdc969;
+  color: base.$secondary-active;
 }
 
 .fa-flag:hover {
-  color: #f6ae29;
+  color: base.$secondary-color;
 }
 
 .fa-flag:active {
-  color: #fdc969;
+  color: base.$secondary-active;
 }
 
 .fa-heart:hover {
-  color: #f6ae29;
+  color: base.$secondary-color;
 }
 
 .fa-heart:active {
-  color: #fdc969;
+  color: base.$secondary-active;
 }

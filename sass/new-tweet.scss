@@ -1,3 +1,5 @@
+@use "base";
+
 .new-tweet {
   /* background-color:blue; */
   width: 90%;
@@ -15,7 +17,7 @@
 #tweet-text {
   display: flex;
   border: none;
-  border-bottom: 4px solid #545149;
+  border-bottom: 4px solid base.$border-color;
   resize: none;
   width: inherit;
   height: 78px;
@@ -45,28 +47,28 @@
 }
 
 #submit-tweet {
-  background-color: #4056A1;
+  background-color: base.$primary-color;
   border: none;
-  color: #ffffff;
-  padding: 0.5em;
+  color: base.$font-primary;
+  padding: .5em;
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
 
 #submit-tweet:hover {
-  background-color: #f6ae29;
+  background-color: base.$secondary-color;
 }
 
 #submit-tweet:active {
-  background-color: #fdc969;
+  background-color: base.$secondary-active;
 }
 
 .error-container {
   display: flex;
   justify-content: center;
   width: 100%;
-  font-weight: bold;
+  font-weight:bold;
   font-size: large;
 }
 
@@ -74,10 +76,10 @@
   display: flex;
   width: inherit;
   border-style: dashed;
-  border-color: #fa3c2d;
-  color: #fa3c2d;
+  border-color: base.$special-color;
+  color: base.$special-color;
   justify-content: space-around;
   align-items: baseline;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  padding-left: .5em;
+  padding-right: .5em;
 }

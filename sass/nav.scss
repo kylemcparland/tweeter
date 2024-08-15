@@ -1,3 +1,5 @@
+@use "base";
+
 #navbar {
   display: flex;
   position: fixed;
@@ -8,7 +10,7 @@
   align-items: center;
   padding-left: 1.5em;
   padding-right: 1.5em;
-  color: #ffffff;
+  color: base.$font-primary;
   justify-content: space-between;
 }
 
@@ -27,33 +29,30 @@
 }
 
 .write-tweet {
-  bottom: -0.8em;
+  bottom: -.8em;
   position: relative;
   user-select: none;
 }
 
 .fa-angles-down {
-  color: #fa3c2d;
+  color: base.$special-color;
   position: relative;
-  padding: 20px;
+  padding: 20px
 }
 
 #navright:hover .fa-angles-down {
   animation-name: arrow;
-  animation-duration: 0.5s;
+  animation-duration: .5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
 }
 
 @keyframes arrow {
-  from {
-    top: 0px;
-  }
-  to {
-    top: 8px;
-  }
+  from {top: 0px}
+  to {top: 8px}
 }
+
 #scroll-up {
   display: none;
   position: fixed;
@@ -61,8 +60,8 @@
   right: 0;
   margin-right: 15px;
   margin-bottom: 25px;
-  background-color: #fa3c2d;
-  color: #ffffff;
+  background-color: base.$special-color;
+  color: base.$font-primary;
   border-radius: 100%;
   width: 90px;
   height: 90px;
@@ -70,22 +69,18 @@
   align-items: center;
   justify-content: center;
 }
-
 #scroll-up.appear {
   animation-name: appear;
-  animation-duration: 0.5s;
+  animation-duration: .5s;
 }
 
 @keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
+
 #scroll-up:hover {
-  background-color: #ff7268;
+  background-color: base.$special-color-hover;
 }
 
 .fa-angles-up {
@@ -94,6 +89,6 @@
 
 @media only screen and (min-width: 1024px) {
   #navbar {
-    background-color: #4056A1;
+    background-color: base.$primary-color;
   }
 }
