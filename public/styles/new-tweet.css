@@ -18,11 +18,13 @@
   border-bottom: 4px solid #545149;
   resize: none;
   width: inherit;
+  height: 78px;
   background-color: transparent;
   outline: none;
   padding-top: 15px;
   padding-bottom: 15px;
   font-style: italic;
+  scrollbar-width: none;
 }
 
 #tweet-container {
