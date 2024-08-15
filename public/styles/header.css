@@ -3,11 +3,11 @@
   width: 100%;
   min-width: 600px;
   height: 400px;
-  background-color: #f6ae29;
-  color: #ffffff;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  background-color: #f6ae29;
+  color: #ffffff;
   background-image: url("https://www.transparenttextures.com/patterns/arches.png");
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }

@@ -1,6 +1,6 @@
 @use "base";
 
-// -- Navbar -- //
+// --- Navbar Section --- //
 #navbar {
   display: flex;
   position: fixed;
@@ -25,6 +25,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     .fa-angles-down {
       position: relative;
@@ -33,7 +34,6 @@
     }
 
     &:hover .fa-angles-down {
-      cursor: pointer;
       animation-name: arrow;
       animation-duration: 0.5s;
       animation-iteration-count: infinite;
@@ -59,7 +59,7 @@
   }
 }
 
-// -- Red Scroll-Up Button -- //
+// --- Red Scroll-Up Button --- //
 #scroll-up {
   display: none;
   position: fixed;
@@ -101,6 +101,7 @@
   }
 }
 
+// --- Media Queries --- //
 @media only screen and (min-width: 1024px) {
   #navbar {
     background-color: base.$primary-color;

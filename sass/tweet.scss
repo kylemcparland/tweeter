@@ -1,13 +1,13 @@
 @use "base";
 
-// --- Tweet Section --- //
+// --- Tweets Section --- //
 .tweets-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
 
-// --- Tweet Style --- //
+  // --- Tweet Style --- //
   .tweet {
     width: 90%;
     border: 4px solid base.$border-color;
@@ -20,7 +20,7 @@
       box-shadow: 7px 7px 1px base.$font-secondary;
     }
 
-// --- Tweet Top Section --- //
+    // --- Tweet Top Section --- //
     .tweet-top {
       display: flex;
       height: 70px;
@@ -47,7 +47,7 @@
       }
     }
 
-// --- Tweet Content Section --- //
+    // --- Tweet Content Section --- //
     .tweet-content {
       display: flex;
       min-height: 75px;
@@ -63,7 +63,7 @@
       }
     }
 
-// --- Tweet Bottom Section --- //
+    // --- Tweet Bottom Section --- //
     .tweet-bottom {
       display: flex;
       height: 47px;
@@ -102,7 +102,8 @@
       }
     }
   }
-// --- New Tweet Appears --- //
+
+  // --- New Tweet Appears --- //
   .highlight {
     animation-name: newTweet;
     animation-duration: 0.5s;

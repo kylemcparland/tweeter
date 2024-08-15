@@ -1,12 +1,14 @@
 @use "base";
 
+// --- New Tweet Section --- //
 .new-tweet {
-  width: 90%;
   display: none;
+  width: 90%;
   flex-direction: column;
   align-items: center;
   padding-bottom: 1em;
 
+  // --- Error Section --- //
   .error-container {
     font-weight: bold;
     font-size: large;
@@ -17,11 +19,12 @@
       color: base.$special-color;
       justify-content: space-around;
       align-items: baseline;
-      padding-left: .5em;
-      padding-right: .5em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
     }
   }
 
+  // --- Compose New Tweet --- //
   #tweet-container {
     display: flex;
     flex-direction: column;
@@ -31,6 +34,7 @@
       padding-top: 1.5em;
     }
 
+    // --- New Tweet Form --- //
     #tweet-text {
       border: none;
       border-bottom: 4px solid base.$border-color;
@@ -44,18 +48,19 @@
       scrollbar-width: none;
     }
 
+    // --- Submit Button and Counter --- //
     #compose-bottom {
       font-family: "bungee";
-      padding-top: 10px;
       display: inherit;
       justify-content: space-between;
       align-items: center;
+      padding-top: 10px;
 
       #submit-tweet {
         background-color: base.$primary-color;
         border: none;
         color: base.$font-primary;
-        padding: .5em;
+        padding: 0.5em;
         outline: none;
 
         &:hover {

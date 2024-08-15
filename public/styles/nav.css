@@ -21,6 +21,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 #navbar #navright .fa-angles-down {
   position: relative;
@@ -28,7 +29,6 @@
   color: #fa3c2d;
 }
 #navbar #navright:hover .fa-angles-down {
-  cursor: pointer;
   animation-name: arrow;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;

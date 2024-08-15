@@ -17,20 +17,20 @@ body {
 }
 body .main-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: inherit;
   width: 75%;
   min-width: 600px;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  background-color: inherit;
 }
 
 @media only screen and (min-width: 1024px) {
   body {
+    padding-top: 0px;
     flex-direction: row;
     align-items: normal;
     justify-content: space-around;
-    padding-top: 0px;
   }
   .main-container {
     max-width: 1005px;
