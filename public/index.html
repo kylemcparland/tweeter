@@ -44,7 +44,7 @@
 
   <!-- Top nav bar (fixed) -->
   <nav id="navbar">
-    <span class="navleft">
+    <span id="navleft">
       Tweeter
     </span>
     <span id="navright">
@@ -56,7 +56,7 @@
   <!-- Header -->
   <header id="user-header">
     <div>
-      <img class="profile-large" src="/images/profile-hex.png" alt="Profile picture">
+      <img class="profile-pic" src="/images/profile-hex.png" alt="Profile picture">
     </div>
     <div>
       <h2>Kyle McParland</h2>
@@ -72,8 +72,8 @@
 
     <section class="new-tweet">
       <div class="error-container"></div>
-      <form action="/tweets" method="POST" id="tweet-container">
-        <label for="tweet-text" class="humming" >What are you humming about?</label>
+      <form id="tweet-container" action="/tweets" method="POST">
+        <label class="humming" for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text"
           placeholder=''></textarea>
         <div id="compose-bottom">

@@ -11,10 +11,11 @@
   align-items: center;
   justify-content: flex-end;
   background-image: url("https://www.transparenttextures.com/patterns/arches.png");
-}
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
-.profile-large {
-  height: 225px
+  .profile-pic {
+    height: 225px
+  }
 }
 
 @media only screen and (min-width: 1024px) {

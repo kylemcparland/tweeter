@@ -6,9 +6,6 @@ html {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
 body {
   display: flex;
   flex-direction: column;
@@ -17,10 +14,8 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: "Source Sans 3", sans-serif;
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
-
-.main-container {
+body .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;

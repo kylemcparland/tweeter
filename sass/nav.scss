@@ -1,58 +1,65 @@
 @use "base";
 
+// -- Navbar -- //
 #navbar {
-  display: flex;
   position: fixed;
   top: 0;
+  display: flex;
   width: 100%;
-  background-color: transparent;
   height: 120px;
   align-items: center;
+  justify-content: space-between;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  background-color: transparent;
   color: base.$font-primary;
-  justify-content: space-between;
+
+  #navleft {
+    font-family: "bungee";
+    font-size: larger;
+  }
+
+  #navright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 55px;
+    justify-content: center;
+
+    .fa-angles-down {
+      color: base.$special-color;
+      position: relative;
+      padding: 20px
+    }
+
+    &:hover .fa-angles-down {
+      animation-name: arrow;
+      animation-duration: .5s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+      cursor: pointer;
+    }
+
+    @keyframes arrow {
+      from {
+        top: 0px
+      }
+
+      to {
+        top: 8px
+      }
+    }
+
+    .write-tweet {
+      bottom: -.8em;
+      position: relative;
+      user-select: none;
+    }
+  }
 }
 
-.navleft {
-  display: flex;
-  font-family: "bungee";
-  font-size: larger;
-}
-
-#navright {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 55px;
-  justify-content: center;
-}
-
-.write-tweet {
-  bottom: -.8em;
-  position: relative;
-  user-select: none;
-}
-
-.fa-angles-down {
-  color: base.$special-color;
-  position: relative;
-  padding: 20px
-}
-
-#navright:hover .fa-angles-down {
-  animation-name: arrow;
-  animation-duration: .5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes arrow {
-  from {top: 0px}
-  to {top: 8px}
-}
-
+// -- Red Scroll-Up Button -- //
 #scroll-up {
   display: none;
   position: fixed;
@@ -68,23 +75,30 @@
   border: none;
   align-items: center;
   justify-content: center;
-}
-#scroll-up.appear {
-  animation-name: appear;
-  animation-duration: .5s;
-}
 
-@keyframes appear {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
+  .fa-angles-up {
+    font-size: 40px;
+  }
 
-#scroll-up:hover {
-  background-color: base.$special-color-hover;
-}
+  &:hover {
+    background-color: base.$special-color-hover;
+    cursor: pointer;
+  }
 
-.fa-angles-up {
-  font-size: 40px;
+  &.appear {
+    animation-name: appear;
+    animation-duration: .5s;
+  }
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @media only screen and (min-width: 1024px) {

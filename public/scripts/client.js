@@ -72,7 +72,7 @@ $(document).ready(function () {
     // Error handling...
     // (Consider separating as separate function isTweetValid())
     if (!tweetCheck) {
-      return errorMsg(`You can't submit an empty tweet! May I suggest a Simpsons quote?`);
+      return errorMsg(`You can't submit an empty tweet!`);
     }
     if (tweetCheck.length > 140) {
       return errorMsg(`Your tweet is too long! Remember: Brevity is the soul of wit!`);

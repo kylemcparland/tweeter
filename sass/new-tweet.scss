@@ -1,85 +1,84 @@
 @use "base";
 
 .new-tweet {
-  /* background-color:blue; */
   width: 90%;
   display: none;
   flex-direction: column;
   align-items: center;
   padding-bottom: 1em;
-}
 
-.humming {
-  font-weight: 600;
-  padding-top: 1.5em;
-}
+  .error-container {
+    // display: flex;
+    // justify-content: center;
+    // width: 100%;
+    font-weight: bold;
+    font-size: large;
 
-#tweet-text {
-  display: flex;
-  border: none;
-  border-bottom: 4px solid base.$border-color;
-  resize: none;
-  width: inherit;
-  height: 78px;
-  background-color: transparent;
-  outline: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-style: italic;
-  scrollbar-width: none;
-}
+    #error-msg {
+      display: flex;
+      // width: inherit;
+      border-style: dashed;
+      // border-color: base.$special-color;
+      color: base.$special-color;
+      justify-content: space-around;
+      align-items: baseline;
+      padding-left: .5em;
+      padding-right: .5em;
+    }
+  }
 
-#tweet-container {
-  /* background-color:aqua; */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+  #tweet-container {
+    // width: 100%;
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
 
-#compose-bottom {
-  font-family: "bungee";
-  padding-top: 10px;
-  /*background-color: red;*/
-  display: inherit;
-  justify-content: space-between;
-  align-items: center;
-}
+    .humming {
+      font-weight: 600;
+      padding-top: 1.5em;
+    }
 
-#submit-tweet {
-  background-color: base.$primary-color;
-  border: none;
-  color: base.$font-primary;
-  padding: .5em;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
+    #tweet-text {
+      // display: flex;
+      border: none;
+      border-bottom: 4px solid base.$border-color;
+      resize: none;
+      // width: inherit;
+      height: 78px;
+      background-color: transparent;
+      outline: none;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      font-style: italic;
+      scrollbar-width: none;
+    }
 
-#submit-tweet:hover {
-  background-color: base.$secondary-color;
-}
+    #compose-bottom {
+      font-family: "bungee";
+      padding-top: 10px;
+      display: inherit;
+      justify-content: space-between;
+      align-items: center;
 
-#submit-tweet:active {
-  background-color: base.$secondary-active;
-}
+      #submit-tweet {
+        background-color: base.$primary-color;
+        border: none;
+        color: base.$font-primary;
+        padding: .5em;
+        outline: none;
+        // text-align: center;
+        // text-decoration: none;
+        // display: inline-block;
 
-.error-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  font-weight:bold;
-  font-size: large;
-}
+        &:hover {
+          background-color: base.$secondary-color;
+          cursor: pointer;
+        }
 
-#error-msg {
-  display: flex;
-  width: inherit;
-  border-style: dashed;
-  border-color: base.$special-color;
-  color: base.$special-color;
-  justify-content: space-around;
-  align-items: baseline;
-  padding-left: .5em;
-  padding-right: .5em;
+        &:active {
+          background-color: base.$secondary-active;
+        }
+      }
+    }
+  }
 }
