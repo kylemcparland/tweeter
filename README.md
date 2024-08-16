@@ -28,7 +28,7 @@ npm run local
 
 ## Final Product
 
-![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/run-tweeter.png "Screenshot of terminal running Tweeter")
+![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/host-tweeter.png "Screenshot of terminal running Tweeter")
 
 _Tweet whatever you like and Tweeter will generate a Username and Handle for you!_
 ![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/submit-tweet.gif "Animated gif of submitting a new Tweet")
