@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  let charCount;
-
+  
+  // ----- Character Counter ----- //
   $('#tweet-text').on('input', function() {
-    charCount = $(this).val().length;
+    const charCount = $(this).val().length;
     const remainingChars = 140 - charCount;
     
     const counter = $('#tweet-container').find('.counter');

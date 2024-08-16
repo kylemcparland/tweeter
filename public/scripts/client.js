@@ -62,7 +62,7 @@ $(document).ready(function() {
         callback(tweets, isNewTweet);
       })
       .catch(error => {
-        console.error("Error retrieving tweets:", error);
+        console.error('Error retrieving tweets:', error);
       });
   };
 
@@ -95,7 +95,7 @@ $(document).ready(function() {
   };
 
 
-  // ----- Random Placeholder Text ----- //
+  // ----- Randomize Placeholder Text ----- //
   const setRandomPlaceholderText = () => {
     const placeholderArr = [
       "Mrs. Krabappel and Principal Skinner were in the closet making babies and I saw one of the babies and the baby looked at me!",
@@ -183,7 +183,7 @@ $(document).ready(function() {
 
 
   // ----- Resize Event ----- //
-  $(window).on("resize", () => {
+  $(window).on('resize', () => {
     if ($(window).scrollTop() > 363 && $(window).width() < 1007) {
       $('#navright').css('display', 'none');
     }
@@ -191,10 +191,10 @@ $(document).ready(function() {
 
 
   // ----- Scroll Button Event ----- //
-  $('#scroll-up').on("click", function() {
+  $('#scroll-up').on('click', function() {
     setRandomPlaceholderText();
     toggleNewTweetForm();
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   });
 
 

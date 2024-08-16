@@ -50,6 +50,8 @@
 }
 
 #scroll-up {
+  justify-content: center;
+  align-items: center;
   display: none;
   position: fixed;
   bottom: 0;
@@ -60,8 +62,6 @@
   height: 90px;
   border: none;
   border-radius: 100%;
-  align-items: center;
-  justify-content: center;
   background-color: #fa3c2d;
   color: #ffffff;
 }

@@ -1,5 +1,10 @@
 @use "base";
 
+@mixin center-content {
+  justify-content: center;
+  align-items: center;
+};
+
 // --- Header Section --- //
 #user-header {
   display: flex;
@@ -22,11 +27,11 @@
 // --- Media Queries --- //
 @media only screen and (min-width: 1024px) {
   #user-header {
+    @include center-content;
     width: 30%;
     max-width: 450px;
     min-width: 0px;
     margin-top: 190px;
     padding-top: 0px;
-    justify-content: center;
   }
 }
