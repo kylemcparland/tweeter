@@ -4,6 +4,8 @@
 <head>
   <!-- Meta Information -->
   <title>Tweeter - Home Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- External CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -31,51 +33,45 @@
   <!-- External JS -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
-
-  <!-- App JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
     integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 </head>
 
 <body>
-
-  <!-- Top nav bar (fixed) -->
+  <!-- Navbar -->
   <nav id="navbar">
-    <span id="navleft">
-      Tweeter
-    </span>
+    <span id="navleft">Tweeter</span>
     <span id="navright">
       <div class="write-tweet"><b>Write</b> a new tweet</div>
       <i class="fa-solid fa-angles-down"></i>
     </span>
   </nav>
 
-  <!-- Header -->
+  <!-- User Header -->
   <header id="user-header">
-    <div>
-      <img class="profile-pic" src="/images/profile-hex.png" alt="Profile picture">
-    </div>
+    <img class="profile-pic" src="/images/profile-hex.png" alt="User profile picture">
     <div>
       <h2>Kyle McParland</h2>
     </div>
   </header>
 
+  <!-- Scroll Up Button -->
   <div id="scroll-up">
     <i class="fa-solid fa-angles-up"></i>
   </div>
 
-  <!-- Page-specific (main) content here -->
+  <!-- Main Page Content -->
   <main class="main-container">
-
     <section class="new-tweet">
       <div class="error-container"></div>
       <form id="tweet-container" action="/tweets" method="POST">
         <label class="humming" for="tweet-text">What are you humming about?</label>
-        <textarea name="text" id="tweet-text"
-          placeholder=''></textarea>
+        <textarea name="text" id="tweet-text" placeholder=''></textarea>
         <div id="compose-bottom">
           <button id="submit-tweet" type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
@@ -85,21 +81,10 @@
 
     <section class="tweets-container">
 
-      <!-- Tweets render here -->
-
+      <!-- Tweets Render Here -->
+       
     </section>
-
-
   </main>
-
 </body>
 
 </html>
-
-<!-- In your HTML file, you've left the label for the textarea empty. It's a good practice to provide a descriptive label for accessibility reasons. You could move the placeholder text to the label like this:
-<label for="tweet-text">What are you humming about?</label>
-<textarea name="text" id="tweet-text"></textarea> -->
-
-<!-- HTML Structure: In your HTML, you've used <div> elements to structure your tweet. While this works, using semantic HTML elements like 
-  <article>, <header>, <section>, and <footer> can make your code more readable and accessible. For example, you could wrap each tweet 
-    in an <article> tag, and use <header> and <footer> tags for the top and bottom parts of the tweet. -->

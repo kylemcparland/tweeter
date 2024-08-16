@@ -1,115 +1,102 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
+  // ----- Create Tweet ----- //
   const createTweetElement = (tweetData) => {
-
     const { user: { name, avatars, handle }, content: { text }, created_at } = tweetData;
-
     const timeAgo = timeago.format(created_at, 'en_US');
 
-    const $tweet = $(`<div class="tweet">
-    <header class="tweet-top">
-      <div class="tweet-top-left">
-        <img class="avatar" alt="avatar" src="${avatars}">
-        <article class="username">${name}</article>
+    // Generate tweet CSS...
+    const $tweet = $(`
+      <div class="tweet">
+        <header class="tweet-top">
+          <div class="tweet-top-left">
+            <img class="avatar" alt="avatar" src="${avatars}">
+            <article class="username">${name}</article>
+          </div>
+          <h5 class="handle">${handle}</h5>
+        </header>
+        <div class="tweet-content">
+          <article class="posted-tweet"></article>
+        </div>
+        <footer class="tweet-bottom">
+          <article class="age">
+            ${timeAgo}
+          </article>
+          <div class="tweet-bottom-right">
+            <i class="fa-solid fa-retweet"></i>
+            <i class="fa-solid fa-flag"></i>
+            <i class="fa-solid fa-heart"></i>
+          </div>
+        </footer>
       </div>
-      <h5 class="handle">${handle}</h5>
-    </header>
-    <div class="tweet-content">
-      <article class="posted-tweet"></article>
-    </div>
-    <footer class="tweet-bottom">
-      <article class="age">
-        ${timeAgo}
-      </article>
-      <div class="tweet-bottom-right">
-        <i class="fa-solid fa-retweet"></i>
-        <i class="fa-solid fa-flag"></i>
-        <i class="fa-solid fa-heart"></i>
-      </div>
-    </footer>
-  </div>`);
+    `);
 
-    $tweet.find(".posted-tweet").text(text);
-
+    // Handle cross-site scripting...
+    $tweet.find('.posted-tweet').text(text);
     return $tweet;
   };
 
-  const renderTweets = (tweets, boolean) => {
-    $(`.tweets-container`).empty();
-    for (const tweet of tweets) {
 
+  // ----- Render Tweets ----- //
+  const renderTweets = (tweets, isNewTweet) => {
+    const $tweetsContainer = $('.tweets-container').empty();
+
+    // Populate page with tweets from database...
+    tweets.forEach((tweet, index) => {
       const $tweet = createTweetElement(tweet);
-      // If newest tweet...
-      if (tweet === tweets[tweets.length - 1] && boolean) {
+
+      // Highlight if new tweet...
+      if (index === tweets.length - 1 && isNewTweet) {
         $tweet.addClass('highlight');
       }
 
-      $(`.tweets-container`).prepend($tweet);
-    };
+      $tweetsContainer.prepend($tweet);
+    });
   };
 
-  const loadTweets = (callback, boolean) => {
-    $.ajax("/tweets", { method: "GET" })
+
+  // ----- Load Tweets from Database ----- //
+  const loadTweets = (callback, isNewTweet) => {
+    $.ajax('/tweets', { method: 'GET' })
       .then(tweets => {
-        console.log("Tweets successfully retrieved! =>", tweets);
-        callback(tweets, boolean);
+        callback(tweets, isNewTweet);
       })
       .catch(error => {
-        console.log("Error retrieving tweets! =>", error);
+        console.error("Error retrieving tweets:", error);
       });
-  }
-
-  loadTweets(renderTweets);
+  };
 
 
-  //// -------------- SUBMIT TWEET -------------- ////
-  const tweetContainer = document.getElementById("tweet-container");
+  // ----- Error Handling ----- //
+  const showError = (errorText) => {
+    const $error = $(`
+      <div id="error-msg" style="display: none;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p> ${errorText} <p>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+    `);
 
-  $(tweetContainer).on("submit", function (event) {
-    event.preventDefault();
-    const tweetCheck = document.getElementById('tweet-text').value.trim();
+    $('.error-container').empty().append($error);
+    $error.slideDown(200);
+  };
 
-    // Error handling...
-    // (Consider separating as separate function isTweetValid())
-    if (!tweetCheck) {
-      return errorMsg(`You can't submit an empty tweet!`);
+
+  // ----- Toggle New Tweet Form ----- //
+  const toggleNewTweetForm = (formVisable) => {
+    const $newTweet = $('.new-tweet');
+    if (formVisable) {
+      $newTweet.slideUp(300);
+    } else {
+      setRandomPlaceholderText();
+      $newTweet.slideDown(300);
+      $('#tweet-text').focus();
     }
-    if (tweetCheck.length > 140) {
-      return errorMsg(`Your tweet is too long! Remember: Brevity is the soul of wit!`);
-    }
+  };
 
-    // Success! Submit tweet...
 
-    if ($('#error-msg').length > 0) {
-      $('#error-msg').slideUp(200, function () {
-        $(this).remove();
-      })
-    }
-
-    const tweetContent = $(this).serialize();
-
-    console.log("Form submitted! Performing AJAX request:", tweetContent);
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: tweetContent,
-      success: function (response) {
-        console.log("Tweet submitted:", response);
-        $('.counter').text(140);
-        tweetContainer.reset();
-        randomPlaceholderMsg();
-        loadTweets(renderTweets, true);
-      },
-      error: function (error) {
-        console.log("Error submitting tweet:", error);
-        return errorMsg(`Error submitting tweet! Please refresh and try again.`);
-      }
-    });
-  });
-
-  // ---- SUBMIT TWEET PALCEHOLDER TEXT ---- //
-
-  const randomPlaceholderMsg = () => {
+  // ----- Random Placeholder Text ----- //
+  const setRandomPlaceholderText = () => {
     const placeholderArr = [
       "Mrs. Krabappel and Principal Skinner were in the closet making babies and I saw one of the babies and the baby looked at me!",
       "And when the doctor said I didn't have worms anymore, that was the happiest day of my life.",
@@ -119,61 +106,97 @@ $(document).ready(function () {
       "Hi, Lisa! Hi, Super Nintendo Chalmers! I'm learnding!"
     ];
     const randomNum = Math.floor(Math.random() * placeholderArr.length);
-    $("#tweet-text").attr("placeholder", placeholderArr[randomNum]);
-  }
-
-  randomPlaceholderMsg()
+    $('#tweet-text').attr('placeholder', placeholderArr[randomNum]);
+  };
 
 
-  // ---- ERROR MESSAGE ---- //
-  const errorMsg = function (errorText) {
-    const $error = $(`<div id="error-msg" style="display: none;">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      <p> ${errorText} <p>
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      </div>
-      `)
+  // ----- Submit Tweet Form ----- //
+  $('#tweet-text').keypress((event) => {
+    if (event.which == '13') {
+      event.preventDefault();
+      $('#tweet-container').submit();
+    }
+  });
 
-    $(`.error-container`).empty().append($error);
-    $error.slideDown(200);
-  }
 
-  const navRight = document.getElementById('navright')
+  // --- Submit New Tweet --- //
+  $('#tweet-container').on('submit', function(event) {
+    event.preventDefault();
+    const tweetCheck = $('#tweet-text').val().trim();
 
-  $(navRight).on("click", function () {
+    // Error handling...
+    if (!tweetCheck) {
+      return showError(`You can't submit an empty tweet!`);
+    }
+    if (tweetCheck.length > 140) {
+      return showError(`Your tweet is too long! Remember: Brevity is the soul of wit!`);
+    }
 
+    // Success! Remove error...
+    if ($('#error-msg').length) {
+      $('#error-msg').slideUp(200, function() {
+        $(this).remove();
+      });
+    }
+
+    // ...and submit tweet!
+    $.ajax({
+      type: 'POST',
+      url: '/tweets',
+      data: $(this).serialize(),
+      success: function() {
+        $('.counter').text(140);
+        $('#tweet-container').get(0).reset();
+        setRandomPlaceholderText();
+        loadTweets(renderTweets, true);
+      },
+      error: function() {
+        return showError(`Error submitting tweet! Please refresh and try again.`);
+      }
+    });
+  });
+
+
+  // ----- Navbar Event ----- //
+  $('#navright').on('click', () => {
     const formVisable = $('.new-tweet:visible').length;
-    if (!formVisable) {
-      randomPlaceholderMsg();
-      $(`.new-tweet`).slideDown(300);
-      $('#tweet-text').focus();
+    toggleNewTweetForm(formVisable);
+  });
+
+
+  // ----- Scroll Events ----- //
+  $(window).on('scroll', function() {
+    const $scrollUp = $('#scroll-up');
+    const $navRight = $('#navright');
+
+    if ($(window).scrollTop() > 363) {
+      $scrollUp.css('display', 'flex').addClass('appear');
+      if ($(window).width() < 1007) {
+        $navRight.css('display', 'none');
+      }
     } else {
-      $(`.new-tweet`).slideUp(300);
+      $scrollUp.css('display', 'none');
+      $navRight.css('display', 'flex');
+    }
+  });
+
+
+  // ----- Resize Event ----- //
+  $(window).on("resize", () => {
+    if ($(window).scrollTop() > 363 && $(window).width() < 1007) {
+      $('#navright').css('display', 'none');
     }
   })
 
-  $(window).on("scroll", function () {
-    if ($(window).scrollTop() > 350) {
-      $(`#scroll-up`).css("display", "flex");
-      $(`#scroll-up`).addClass('appear');
-      // $(navRight).css("display", "none");
-    } else {
-      $(`#scroll-up`).css("display", "none");
-      // $(navRight).css("display", "flex");
-    }
-  })
 
-  $('#scroll-up').on("click", function () {
-    randomPlaceholderMsg()
-    $(`.new-tweet`).slideDown(300);
-    $('#tweet-text').focus();
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth"
-    })
-  })
+  // ----- Scroll Button Event ----- //
+  $('#scroll-up').on("click", function() {
+    setRandomPlaceholderText();
+    toggleNewTweetForm();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
 
+
+  // ----- Initialize Page ----- //
+  loadTweets(renderTweets);
 });
-
-// JavaScript: You could consider refactoring your code to make it more modular. For example, the code for showing and hiding the scroll-up button could be put into a separate function.

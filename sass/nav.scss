@@ -14,11 +14,13 @@
   background-color: transparent;
   color: base.$font-primary;
 
+  // --- Navleft Style --- //
   #navleft {
     font-family: "bungee";
     font-size: larger;
   }
 
+  // --- Navright Section --- //
   #navright {
     display: flex;
     height: 55px;
@@ -85,6 +87,7 @@
     cursor: pointer;
   }
 
+  // --- Button Appear --- //
   &.appear {
     animation-name: appear;
     animation-duration: 0.5s;
@@ -105,5 +108,8 @@
 @media only screen and (min-width: 1024px) {
   #navbar {
     background-color: base.$primary-color;
+    #navright {
+      display: flex !important;
+    }
   }
 }

@@ -89,4 +89,7 @@
   #navbar {
     background-color: #4056A1;
   }
+  #navbar #navright {
+    display: flex !important;
+  }
 }
