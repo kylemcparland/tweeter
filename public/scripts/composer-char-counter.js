@@ -1,19 +1,17 @@
 $(document).ready(function() {
   let charCount;
-  
-  $("#tweet-text").on("input", function(event) {
+
+  $('#tweet-text').on('input', function() {
     charCount = $(this).val().length;
-    // console.log(event.originalEvent.data);
-    let remainingChars = 140 - charCount;
-
-    let counter = $(this).closest("#tweet-container").find(".counter");
-
+    const remainingChars = 140 - charCount;
+    
+    const counter = $('#tweet-container').find('.counter');
     counter.text(remainingChars);
 
     if (remainingChars < 0) {
-      counter.css("color", "red")
+      counter.css('color', 'red')
     } else {
-      counter.css("color", "");
+      counter.css('color', '');
     }
   });
 });

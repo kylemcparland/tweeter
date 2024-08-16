@@ -169,6 +169,7 @@ $(document).ready(function() {
     const $scrollUp = $('#scroll-up');
     const $navRight = $('#navright');
 
+    // Scrolled down far enough. Buttons appear/disappear!
     if ($(window).scrollTop() > 363) {
       $scrollUp.css('display', 'flex').addClass('appear');
       if ($(window).width() < 1007) {
