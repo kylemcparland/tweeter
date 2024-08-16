@@ -29,9 +29,15 @@ npm run local
 ## Final Product
 
 ![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/run-tweeter.png "Screenshot of terminal running Tweeter")
+
+_Tweet whatever you like and Tweeter will generate a Username and Handle for you!_
 ![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/submit-tweet.gif "Animated gif of submitting a new Tweet")
+
+_Responsive design in action! Desktop ==> Mobile_
 ![Screenshot](https://github.com/kylemcparland/tweeter/blob/master/public/images/responsive-design.gif?raw=true "Animated gif of the layout changing when resizing the window")
-![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/tweet-design.png "Screenshot of two different sized Tweets")
+
+_Even the Tweets have responsive design!_
+![Screenshot](https://raw.githubusercontent.com/kylemcparland/tweeter/master/public/images/tweet-designs.png "Screenshot of two different sized Tweets")
 
 ## Dependencies + Acknowledgements
 This project would not be possible without the following amazing libraries:
